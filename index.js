@@ -1,6 +1,6 @@
-const express = require('express'); //
+const express = require('express');
 const app = express();
-const dotenv = require('dotenv');
+require('dotenv').config();
 const connectApp = require('./config/db');
 const cors = require('cors');
 
@@ -19,7 +19,7 @@ app.use('/users', require('./route/UsersRoute'));
 app.use('/post', require('./route/PostRoute'));
 app.use('/comment', require('./route/CommentRoute'));
 
-const PORT = dotenv.configDotenv().parsed.PATH || 8000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () =>
 	console.log(`server is running on http://localhost:${PORT}`)
